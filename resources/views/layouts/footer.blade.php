@@ -1,5 +1,5 @@
 <footer class="bg-white pt-16 pb-12 border-t border-gray-100">
-    <div class="container grid grid-cols-1 ">
+    <div class="container grid grid-cols-1 px-8">
         <div class="col-span-1 space-y-4">
             <img src="{{ asset('images/logo.svg') }}" alt="logo" class="w-30">
             <div class="mr-2">
@@ -69,8 +69,8 @@
 
 <!-- copyright -->
 <div class="bg-gray-800 py-4">
-    <div class="container flex items-center justify-between">
-        <p class="text-white">&copy; TailCommerce - All Right Reserved</p>
+    <div class="container flex items-center justify-between px-8">
+        <p class="text-white">&copy; {{ \Carbon\Carbon::now()->year }} Tickety - All Right Reserved</p>
         <div>
             <img src="{{ asset('images/methods.png') }}" alt="methods" class="h-5">
         </div>
