@@ -11,7 +11,7 @@
                 acara seru dan pesan tiket dengan cepat, tanpa ribet. <br> Nikmati momen meriah di setiap kesempatan!
             </p>
             <div class="mt-12">
-                <a href="#shop"
+                <a href="{{ route('event.index') }}"
                     class="bg-primary border border-primary text-white px-8 py-3 font-medium
                     rounded-md hover:bg-transparent hover:text-primary">Shop
                     Now</a>
