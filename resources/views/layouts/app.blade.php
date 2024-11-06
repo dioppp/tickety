@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tickety</title>
 
-    <link rel="shortcut icon" href="{{ asset('images/favicon/favicon.ico') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('images/logos/tickety.png') }}" type="image/x-icon">
 
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
 

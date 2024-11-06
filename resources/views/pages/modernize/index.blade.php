@@ -3,7 +3,7 @@
 
 <head>
     @include('../partials/head')
-    <title>Modernize TailwindCSS HTML Admin Template</title>
+    <title>Tickety</title>
 </head>
 
 <body class=" bg-white">
