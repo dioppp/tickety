@@ -12,7 +12,9 @@ class EventController extends Controller
      */
     public function index()
     {
-        return view('pages.shop');
+        $events = Event::all();
+
+        return view('index', compact('events'));
     }
 
     /**
