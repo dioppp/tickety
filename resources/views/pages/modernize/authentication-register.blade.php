@@ -3,7 +3,7 @@
 
 <head>
     @include('../partials/head')
-    <title>Modernize TailwindCSS HTML Admin Template</title>
+    <title>Register | Tickety</title>
 </head>
 
 <body class="DEFAULT_THEME bg-white">

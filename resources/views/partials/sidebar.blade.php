@@ -15,48 +15,27 @@
 
                 <li class="sidebar-item">
                     <a class="sidebar-link gap-3 py-2 px-3  rounded-md  w-full flex items-center hover:text-blue-600 hover:bg-blue-500"
-                        href="@@webRoot/index.html">
-                        <i class="ti ti-layout-dashboard  text-xl"></i> <span>Dashboard</span>
+                        href="{{ route('dashboard') }}">
+                        <i class="ti ti-home  text-xl"></i> <span>Dashboard</span>
                     </a>
                 </li>
 
                 <li class="text-xs font-bold mb-4 mt-8">
                     <i class="ti ti-dots nav-small-cap-icon text-lg hidden text-center"></i>
-                    <span>UI COMPONENTS</span>
+                    <span>DISCOVER</span>
                 </li>
 
                 <li class="sidebar-item">
                     <a class="sidebar-link gap-3 py-2 px-3  rounded-md w-full flex items-center hover:text-blue-600 hover:bg-blue-500"
-                        href="@@webRoot/components/buttons.html">
-                        <i class="ti ti-article  text-xl"></i> <span>Buttons</span>
+                        href="{{ route('event.index') }}">
+                        <i class="ti ti-calendar-event text-xl"></i> <span>Events</span>
                     </a>
                 </li>
 
                 <li class="sidebar-item">
                     <a class="sidebar-link gap-3 py-2 px-3  rounded-md w-full flex items-center hover:text-blue-600 hover:bg-blue-500"
                         href="@@webRoot/components/alerts.html">
-                        <i class="ti ti-alert-circle  text-xl"></i> <span>Alerts</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item">
-                    <a class="sidebar-link gap-3 py-2 px-3  rounded-md w-full flex items-center hover:text-blue-600 hover:bg-blue-500"
-                        href="@@webRoot/components/cards.html">
-                        <i class="ti ti-cards  text-xl"></i> <span>Card</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item">
-                    <a class="sidebar-link gap-3 py-2 px-3  rounded-md w-full flex items-center hover:text-blue-600 hover:bg-blue-500"
-                        href="@@webRoot/components/forms.html">
-                        <i class="ti ti-file-description  text-xl"></i> <span>Forms</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item">
-                    <a class="sidebar-link gap-3 py-2 px-3  rounded-md w-full flex items-center hover:text-blue-600 hover:bg-blue-500"
-                        href="@@webRoot/components/typography.html">
-                        <i class="ti ti-typography text-xl"></i> <span>Typography</span>
+                        <i class="ti ti-ticket text-xl"></i> <span>Tickets</span>
                     </a>
                 </li>
 
@@ -78,39 +57,8 @@
                         <i class="ti ti-user-plus  text-xl"></i> <span>Register</span>
                     </a>
                 </li>
-
-                <li class="text-xs font-bold mb-4 mt-8">
-                    <i class="ti ti-dots nav-small-cap-icon text-lg hidden text-center"></i>
-                    <span>EXTRA</span>
-                </li>
-
-                <li class="sidebar-item">
-                    <a class="sidebar-link gap-3 py-2 px-3  rounded-md w-full flex items-center hover:text-blue-600 hover:bg-blue-500"
-                        href="@@webRoot/pages/icons.html">
-                        <i class="ti ti-mood-happy  text-xl"></i> <span>Icons</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item">
-                    <a class="sidebar-link gap-3 py-2 px-3  rounded-md w-full flex items-center hover:text-blue-600 hover:bg-blue-500"
-                        href="@@webRoot/pages/sample-page.html">
-                        <i class="ti ti-aperture  text-xl"></i> <span>Sample Page</span>
-                    </a>
-                </li>
-
             </ul>
         </nav>
-    </div>
-</div>
-
-<!-- Bottom Upgrade Option -->
-<div class="m-6  relative">
-    <div class="bg-blue-500 p-5 rounded-md flex items-center justify-between">
-        <div>
-            <h5 class="text-base font-semibold text-gray-700 mb-3">Upgrade to Pro</h5>
-            <button class="text-xs font-semibold hover:bg-blue-700 text-white bg-blue-600 rounded-md  px-4 py-2">Buy
-                Pro</button>
-        </div>
     </div>
 </div>
 <!-- </aside> -->

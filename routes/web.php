@@ -17,20 +17,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [GuestController::class, 'index'])->name('index');
 
+Route::get('/dashboard', function () {
+    return view('pages.modernize.index');
+})->name('dashboard');
+
 Route::resource('/event', EventController::class);
-
-// Route::get('/account', function () {
-//     return view('pages.account');
-// });
-
-// Route::get('/checkout', function () {
-//     return view('pages.checkout');
-// });
-
-// Route::get('/products', function () {
-//     return view('pages.product');
-// });
-
-// Route::get('/wishlist', function () {
-//     return view('pages.wishlist');
-// });
