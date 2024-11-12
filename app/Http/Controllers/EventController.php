@@ -37,7 +37,7 @@ class EventController extends Controller
     public function store(StoreEventRequest $request)
     {
         $data = $request->validated();
-        $data['image'] = $request->file('image') ? $request->file('image')->store('images', 'public') : null;
+        $data['image'] = $request->file('image') ? $request->file('image')->store('banners') : null;
 
         $tickets = isset($data['tickets']) ? (is_array($data['tickets']) ? $data['tickets'] : [$data['tickets']]) : [];
 

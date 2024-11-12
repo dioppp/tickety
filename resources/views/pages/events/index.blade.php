@@ -9,11 +9,16 @@
                         <div class="flex flex-col gap-6">
                             <div class="card overflow-hidden">
                                 <a href="{{ route('event.index') }}" class="bg-white">
-                                    <img class="w-full h-auto rounded-t-xl" src="{{ asset('images/events/tulus.jpg') }}"
-                                        alt="Image Description">
+                                    @if ($event->image == 'default.jpg')
+                                        <img class="w-full h-auto rounded-t-xl" src="{{ asset('images/events/tulus.jpg') }}"
+                                            alt="Image Description">
+                                    @else
+                                        <img class="w-full h-auto rounded-t-xl"
+                                            src="{{ asset('storage/' . $event->image) }}" alt="Image Description">
+                                    @endif
                                     <div class="card-body">
                                         <h3 class="text-lg font-medium text-gray-700">
-                                            {{ $event->title }}
+                                            {{ ucwords($event->event_name) }}
                                         </h3>
                                         <p class="mt-1 text-sm text-gray-500 pr-10">
                                             {{ \Carbon\Carbon::parse($event->start_date)->format('d M Y') }}
