@@ -13,7 +13,7 @@
         </li> --}}
     </ul>
     <div class="flex items-center gap-4">
-        <a href="#" class="btn font-medium hover:bg-blue-700 py-2" aria-current="page">
+        <a href="{{ route('event.create') }}" class="btn font-medium hover:bg-blue-700 py-2" aria-current="page">
             <i class="ti ti-calendar-plus relative z-1"></i>
             Buat Event
         </a>

@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\CategoryEnum;
 use App\Models\Event;
+use App\Models\Ticket;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Requests\StoreEventRequest;
 
 class EventController extends Controller
 {
@@ -14,7 +18,7 @@ class EventController extends Controller
     {
         $events = Event::all();
 
-        return view('pages.shop', compact('events'));
+        return view('pages.events.index', compact('events'));
     }
 
     /**
@@ -22,15 +26,31 @@ class EventController extends Controller
      */
     public function create()
     {
-        //
+        $categories = CategoryEnum::cases();
+
+        return view('pages.events.create', compact('categories'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreEventRequest $request)
     {
-        //
+        $data = $request->validated();
+        $data['image'] = $request->file('image') ? $request->file('image')->store('images', 'public') : null;
+
+        $tickets = isset($data['tickets']) ? (is_array($data['tickets']) ? $data['tickets'] : [$data['tickets']]) : [];
+
+        DB::transaction(function () use ($data, $tickets) {
+            $event = Event::create($data);
+
+            foreach ($tickets as $ticket) {
+                $ticket['event_id'] = $event->id;
+                Ticket::create($ticket);
+            }
+        });
+
+        return redirect()->route('event.index')->with('success', 'Event created successfully');
     }
 
     /**
