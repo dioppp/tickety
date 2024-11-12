@@ -11,8 +11,8 @@ class Ticket extends Model
 
     protected $fillable = [
         'event_id',
-        'name',
-        'description',
+        'ticket_name',
+        'ticket_description',
         'sell_start_date',
         'sell_end_date',
         'price',

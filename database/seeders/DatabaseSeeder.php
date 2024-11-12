@@ -27,8 +27,9 @@ class DatabaseSeeder extends Seeder
 
         Event::create([
             'user_id' => 1,
-            'title' => 'Feast',
-            'description' => 'Description 1',
+            'event_name' => 'Feast',
+            'category' => 'Konser',
+            'event_description' => 'Description 1',
             'location' => 'Location 1',
             'start_date' => '2024-10-23',
             'end_date' => '2024-10-23',
@@ -39,8 +40,9 @@ class DatabaseSeeder extends Seeder
 
         Event::create([
             'user_id' => 1,
-            'title' => 'Tulus Concert',
-            'description' => 'Description 1',
+            'event_name' => 'Tulus Concert',
+            'category' => 'Konser',
+            'event_description' => 'Description 1',
             'location' => 'Location 1',
             'start_date' => '2024-10-23',
             'end_date' => '2024-10-23',
@@ -51,8 +53,9 @@ class DatabaseSeeder extends Seeder
 
         Event::create([
             'user_id' => 1,
-            'title' => 'Hindia Tour',
-            'description' => 'Description 1',
+            'event_name' => 'Hindia Tour',
+            'category' => 'Konser',
+            'event_description' => 'Description 1',
             'location' => 'Location 1',
             'start_date' => '2024-10-23',
             'end_date' => '2024-10-23',
@@ -63,8 +66,9 @@ class DatabaseSeeder extends Seeder
 
         Event::create([
             'user_id' => 1,
-            'title' => 'Perunggu Coyy   ',
-            'description' => 'Description 1',
+            'event_name' => 'Perunggu Coyy',
+            'category' => 'Konser',
+            'event_description' => 'Description 1',
             'location' => 'Location 1',
             'start_date' => '2024-10-23',
             'end_date' => '2024-10-23',
@@ -75,8 +79,8 @@ class DatabaseSeeder extends Seeder
 
         Ticket::create([
             'event_id' => 1,
-            'name' => 'Ticket 1',
-            'description' => 'Description 1',
+            'ticket_name' => 'Ticket 1',
+            'ticket_description' => 'Description 1',
             'sell_start_date' => '2024-10-20 08:00:00',
             'sell_end_date' => '2024-10-20 17:00:00',
             'price' => 100000,
@@ -85,8 +89,8 @@ class DatabaseSeeder extends Seeder
 
         Ticket::create([
             'event_id' => 2,
-            'name' => 'Ticket 1',
-            'description' => 'Description 1',
+            'ticket_name' => 'Ticket 1',
+            'ticket_description' => 'Description 1',
             'sell_start_date' => '2024-10-20 08:00:00',
             'sell_end_date' => '2024-10-20 17:00:00',
             'price' => 150000,
@@ -95,8 +99,8 @@ class DatabaseSeeder extends Seeder
 
         Ticket::create([
             'event_id' => 3,
-            'name' => 'Ticket 1',
-            'description' => 'Description 1',
+            'ticket_name' => 'Ticket 1',
+            'ticket_description' => 'Description 1',
             'sell_start_date' => '2024-10-20 08:00:00',
             'sell_end_date' => '2024-10-20 17:00:00',
             'price' => 180000,
@@ -105,8 +109,8 @@ class DatabaseSeeder extends Seeder
 
         Ticket::create([
             'event_id' => 4,
-            'name' => 'Ticket 1',
-            'description' => 'Description 1',
+            'ticket_name' => 'Ticket 1',
+            'ticket_description' => 'Description 1',
             'sell_start_date' => '2024-10-20 08:00:00',
             'sell_end_date' => '2024-10-20 17:00:00',
             'price' => 80000,

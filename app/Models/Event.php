@@ -11,8 +11,9 @@ class Event extends Model
 
     protected $fillable = [
         'user_id',
-        'title',
-        'description',
+        'event_name',
+        'category',
+        'event_description',
         'location',
         'start_date',
         'end_date',

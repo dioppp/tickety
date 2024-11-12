@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            $table->string('title');
-            $table->text('description');
+            $table->string('event_name');
+            $table->enum('category', ['Konser', 'Festival', 'Pertandingan', 'Pameran', 'Workshop', 'Seminar', 'Lainnya']);
+            $table->text('event_description');
             $table->string('location');
             $table->date('start_date');
             $table->date('end_date');
