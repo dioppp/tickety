@@ -15,7 +15,7 @@
                                     Event</label>
                                 <input type="text" name="event_name" id="event_name"
                                     class="@error('event_name') is-invalid @enderror py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-600 focus:ring-0"
-                                    placeholder="Nama Event">
+                                    placeholder="Nama Event" value="{{ old('event_name') }}">
                                 @error('event_name')
                                     <div class="invalid-feedback text-sm text-red-500">
                                         {{ $message }}
@@ -43,7 +43,7 @@
                                     class="block text-sm font-semibold mb-2 text-gray-600">Deskripsi Event</label>
                                 <input type="text" name="event_description" id="event_description"
                                     class="@error('event_description') is-invalid @enderror py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-600 focus:ring-0"
-                                    placeholder="Deskripsi Event">
+                                    placeholder="Deskripsi Event" value="{{ old('event_description') }}">
                                 @error('event_description')
                                     <div class="invalid-feedback text-sm text-red-500">
                                         {{ $message }}
@@ -54,7 +54,7 @@
                                 <label for="location" class="block text-sm font-semibold mb-2 text-gray-600">Lokasi</label>
                                 <input type="text" name="location" id="location"
                                     class="@error('location') is-invalid @enderror py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-600 focus:ring-0"
-                                    placeholder="Contoh: Surabaya">
+                                    placeholder="Contoh: Surabaya" value="{{ old('location') }}">
                                 @error('location')
                                     <div class="invalid-feedback text-sm text-red-500">
                                         {{ $message }}
@@ -67,7 +67,7 @@
                                         Mulai
                                         Event</label>
                                     <input type="date" name="start_date" id="start_date"
-                                        class="@error('start_date') is-invalid @enderror py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-600 focus:ring-0">
+                                        class="@error('start_date') is-invalid @enderror py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-600 focus:ring-0" value="{{ old('start_date') }}">
                                     @error('start_date')
                                         <div class="invalid-feedback text-sm text-red-500">
                                             {{ $message }}
@@ -79,7 +79,7 @@
                                         Berakhir
                                         Event</label>
                                     <input type="date" name="end_date" id="end_date"
-                                        class="@error('end_date') is-invalid @enderror py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-600 focus:ring-0">
+                                        class="@error('end_date') is-invalid @enderror py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-600 focus:ring-0" value="{{ old('end_date') }}">
                                     @error('end_date')
                                         <div class="invalid-feedback text-sm text-red-500">
                                             {{ $message }}
@@ -92,7 +92,7 @@
                                     <label for="start_time" class="block text-sm font-semibold mb-2 text-gray-600">Jam Mulai
                                         Event</label>
                                     <input type="time" name="start_time" id="start_time"
-                                        class="@error('start_time') is-invalid @enderror py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-600 focus:ring-0">
+                                        class="@error('start_time') is-invalid @enderror py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-600 focus:ring-0" value="{{ old('start_time') }}">
                                     @error('start_time')
                                         <div class="invalid-feedback text-sm text-red-500">
                                             {{ $message }}
@@ -104,7 +104,7 @@
                                         Berakhir
                                         Event</label>
                                     <input type="time" name="end_time" id="end_time"
-                                        class="@error('end_time') is-invalid @enderror py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-600 focus:ring-0">
+                                        class="@error('end_time') is-invalid @enderror py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-600 focus:ring-0" value="{{ old('end_time') }}">
                                     @error('end_time')
                                         <div class="invalid-feedback text-sm text-red-500">
                                             {{ $message }}
@@ -129,7 +129,7 @@
                                     Tiket</label>
                                 <input type="text" name="tickets[0][ticket_name]" id="ticket_name"
                                     class="@error('tickets.0.ticket_name') is-invalid @enderror py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-600 focus:ring-0"
-                                    placeholder="Maksimal 50 karakter">
+                                    placeholder="Maksimal 50 karakter" value="{{ old('tickets.0.ticket_name') }}">
                                 @error('tickets.0.ticket_name')
                                     <div class="invalid-feedback text-sm text-red-500">
                                         {{ $message }}
@@ -141,7 +141,7 @@
                                     Tiket</label>
                                 <input type="number" name="tickets[0][stock]" id="stock"
                                     class="@error('tickets.0.stock') is-invalid @enderror py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-600 focus:ring-0"
-                                    placeholder="0">
+                                    placeholder="0" value="{{ old('tickets.0.stock') }}">
                                 @error('tickets.0.stock')
                                     <div class="invalid-feedback text-sm text-red-500">
                                         {{ $message }}
@@ -153,7 +153,7 @@
                                     Tiket</label>
                                 <input type="number" name="tickets[0][price]" id="price"
                                     class="@error('tickets.0.price') is-invalid @enderror py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-600 focus:ring-0"
-                                    placeholder="Rp0">
+                                    placeholder="Rp0" value="{{ old('tickets.0.price') }}">
                                 @error('tickets.0.price')
                                     <div class="invalid-feedback text-sm text-red-500">
                                         {{ $message }}
@@ -165,7 +165,7 @@
                                     class="block text-sm font-semibold mb-2 text-gray-600">Deskripsi Tiket</label>
                                 <input type="text" name="tickets[0][ticket_description]" id="ticket_description"
                                     class="@error('tickets.0.ticket_description') is-invalid @enderror py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-600 focus:ring-0"
-                                    placeholder="Deskripsi Tiket">
+                                    placeholder="Deskripsi Tiket" value="{{ old('tickets.0.ticket_description') }}">
                                 @error('tickets.0.ticket_description')
                                     <div class="invalid-feedback text-sm text-red-500">
                                         {{ $message }}
@@ -178,7 +178,7 @@
                                         class="block text-sm font-semibold mb-2 text-gray-600">Tanggal Mulai
                                         Penjualan</label>
                                     <input type="date" name="tickets[0][sell_start_date]" id="sell_start_date"
-                                        class="@error('tickets.0.sell_start_date') is-invalid @enderror py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-600 focus:ring-0">
+                                        class="@error('tickets.0.sell_start_date') is-invalid @enderror py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-600 focus:ring-0" value="{{ old('tickets.0.sell_start_date') }}">
                                     @error('tickets.0.sell_start_date')
                                         <div class="invalid-feedback text-sm text-red-500">
                                             {{ $message }}
@@ -190,8 +190,35 @@
                                         class="block text-sm font-semibold mb-2 text-gray-600">Tanggal Berakhir
                                         Penjualan</label>
                                     <input type="date" name="tickets[0][sell_end_date]" id="sell_end_date"
-                                        class="@error('tickets.0.sell_end_date') is-invalid @enderror py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-600 focus:ring-0">
+                                        class="@error('tickets.0.sell_end_date') is-invalid @enderror py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-600 focus:ring-0" value="{{ old('tickets.0.sell_end_date') }}">
                                     @error('tickets.0.sell_end_date')
+                                        <div class="invalid-feedback text-sm text-red-500">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 lg:grid-cols-2 lg:gap-x-6 gap-x-0 lg:gap-y-6 gap-y-6">
+                                <div>
+                                    <label for="sell_start_time"
+                                        class="block text-sm font-semibold mb-2 text-gray-600">Jam
+                                        Mulai
+                                        Penjualan</label>
+                                    <input type="time" name="tickets[0][sell_start_time]" id="sell_start_time"
+                                        class="@error('tickets.0.sell_start_time') is-invalid @enderror py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-600 focus:ring-0" value="{{ old('tickets.0.sell_end_time') }}">
+                                    @error('tickets.0.sell_start_time')
+                                        <div class="invalid-feedback text-sm text-red-500">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                                <div>
+                                    <label for="sell_end_time" class="block text-sm font-semibold mb-2 text-gray-600">Jam
+                                        Berakhir
+                                        Penjualan</label>
+                                    <input type="time" name="tickets[0][sell_end_time]" id="sell_end_time"
+                                        class="@error('tickets.0.sell_end_time') is-invalid @enderror py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-600 focus:ring-0" value="{{ old('tickets.0.sell_end_time') }}">
+                                    @error('tickets.0.sell_end_time')
                                         <div class="invalid-feedback text-sm text-red-500">
                                             {{ $message }}
                                         </div>
@@ -249,6 +276,20 @@
                 <label for="sell_end_date" class="block text-sm font-semibold mb-2 text-gray-600">Tanggal Berakhir
                     Penjualan</label>
                 <input type="date" name="tickets[__index__][sell_end_date]" id="sell_end_date"
+                    class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-600 focus:ring-0">
+            </div>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 lg:gap-x-6 gap-x-0 lg:gap-y-6 gap-y-6">
+            <div>
+                <label for="sell_start_time" class="block text-sm font-semibold mb-2 text-gray-600">Jam Mulai
+                    Penjualan</label>
+                <input type="time" name="tickets[__index__][sell_start_time]" id="sell_start_time"
+                    class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-600 focus:ring-0">
+            </div>
+            <div>
+                <label for="sell_end_time" class="block text-sm font-semibold mb-2 text-gray-600">Jam Berakhir
+                    Penjualan</label>
+                <input type="time" name="tickets[__index__][sell_end_time]" id="sell_end_time"
                     class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-600 focus:ring-0">
             </div>
         </div>

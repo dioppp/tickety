@@ -38,9 +38,11 @@ class StoreEventRequest extends FormRequest
             'tickets.*.ticket_name' => 'required_with:tickets|string|max:255',
             'tickets.*.ticket_description' => 'required_with:tickets|string',
             'tickets.*.price' => 'required_with:tickets|numeric|min:0',
-            'tickets.*.stock' => 'required_with:tickets|integer|min:1',
+            'tickets.*.stock' => 'required_with:tickets|integer|min:0',
             'tickets.*.sell_start_date' => 'required_with:tickets|date',
             'tickets.*.sell_end_date' => 'required_with:tickets|date|after_or_equal:tickets.*.sell_start_date',
+            'tickets.*.sell_start_time' => 'required_with:tickets|date_format:H:i',
+            'tickets.*.sell_end_time' => 'required_with:tickets|date_format:H:i|after:tickets.*.sell_start_time',
         ];
     }
 }
