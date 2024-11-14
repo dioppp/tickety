@@ -16,10 +16,12 @@ return new class extends Migration
             $table->foreignId('event_id')->constrained();
             $table->string('ticket_name');
             $table->string('ticket_description');
-            $table->dateTime('sell_start_date');
-            $table->dateTime('sell_end_date');
             $table->integer('price');
             $table->integer('stock');
+            $table->date('sell_start_date');
+            $table->date('sell_end_date');
+            $table->time('sell_start_time');
+            $table->time('sell_end_time');
             $table->timestamps();
         });
     }

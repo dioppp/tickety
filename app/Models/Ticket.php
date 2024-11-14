@@ -13,10 +13,12 @@ class Ticket extends Model
         'event_id',
         'ticket_name',
         'ticket_description',
-        'sell_start_date',
-        'sell_end_date',
         'price',
         'stock',
+        'sell_start_date',
+        'sell_end_date',
+        'sell_start_time',
+        'sell_end_time',
     ];
 
     public function event()

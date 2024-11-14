@@ -81,40 +81,48 @@ class DatabaseSeeder extends Seeder
             'event_id' => 1,
             'ticket_name' => 'Ticket 1',
             'ticket_description' => 'Description 1',
-            'sell_start_date' => '2024-10-20 08:00:00',
-            'sell_end_date' => '2024-10-20 17:00:00',
             'price' => 100000,
             'stock' => 100,
+            'sell_start_date' => '2024-10-20',
+            'sell_end_date' => '2024-10-20',
+            'sell_start_time' => '08:00:00',
+            'sell_end_time' => '17:00:00',
         ]);
 
         Ticket::create([
             'event_id' => 2,
             'ticket_name' => 'Ticket 1',
             'ticket_description' => 'Description 1',
-            'sell_start_date' => '2024-10-20 08:00:00',
-            'sell_end_date' => '2024-10-20 17:00:00',
             'price' => 150000,
             'stock' => 100,
+            'sell_start_date' => '2024-10-20',
+            'sell_end_date' => '2024-10-20',
+            'sell_start_time' => '08:00:00',
+            'sell_end_time' => '17:00:00',
         ]);
 
         Ticket::create([
             'event_id' => 3,
             'ticket_name' => 'Ticket 1',
             'ticket_description' => 'Description 1',
-            'sell_start_date' => '2024-10-20 08:00:00',
-            'sell_end_date' => '2024-10-20 17:00:00',
             'price' => 180000,
             'stock' => 100,
+            'sell_start_date' => '2024-10-20',
+            'sell_end_date' => '2024-10-20',
+            'sell_start_time' => '08:00:00',
+            'sell_end_time' => '17:00:00',
         ]);
 
         Ticket::create([
             'event_id' => 4,
             'ticket_name' => 'Ticket 1',
             'ticket_description' => 'Description 1',
-            'sell_start_date' => '2024-10-20 08:00:00',
-            'sell_end_date' => '2024-10-20 17:00:00',
             'price' => 80000,
             'stock' => 100,
+            'sell_start_date' => '2024-10-20',
+            'sell_end_date' => '2024-10-20',
+            'sell_start_time' => '08:00:00',
+            'sell_end_time' => '17:00:00',
         ]);
     }
 }
