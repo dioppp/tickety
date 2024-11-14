@@ -56,15 +56,18 @@ class EventController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Event $product)
+    public function show(Event $event)
     {
-        //
+        $event = Event::with('tickets')->find($event->id);
+        $tickets = $event->tickets;
+
+        return view('pages.events.show', compact('event', 'tickets'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Event $product)
+    public function edit(Event $event)
     {
         //
     }
@@ -72,7 +75,7 @@ class EventController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Event $product)
+    public function update(Request $request, Event $event)
     {
         //
     }
@@ -80,7 +83,7 @@ class EventController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Event $product)
+    public function destroy(Event $event)
     {
         //
     }
