@@ -13,8 +13,7 @@
             <div class="mt-12">
                 <a href="{{ route('event.index') }}"
                     class="bg-primary border border-primary text-white px-8 py-3 font-medium
-                    rounded-md hover:bg-transparent hover:text-primary">Shop
-                    Now</a>
+                    rounded-md hover:bg-transparent hover:text-primary">Cek Event</a>
             </div>
         </div>
     </div>
