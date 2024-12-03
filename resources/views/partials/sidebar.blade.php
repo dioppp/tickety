@@ -1,6 +1,3 @@
-<!-- ---------------------------------- -->
-<!-- Start Vertical Layout Sidebar -->
-<!-- ---------------------------------- -->
 <div class="p-5">
     @include('partials.logo-sidebar')
 </div>
@@ -38,27 +35,7 @@
                         <i class="ti ti-ticket text-xl"></i> <span>Tickets</span>
                     </a>
                 </li>
-
-                <li class="text-xs font-bold mb-4 mt-8">
-                    <i class="ti ti-dots nav-small-cap-icon text-lg hidden text-center"></i>
-                    <span>AUTH</span>
-                </li>
-
-                <li class="sidebar-item">
-                    <a class="sidebar-link gap-3 py-2 px-3  rounded-md w-full flex items-center hover:text-blue-600 hover:bg-blue-500"
-                        href="@@webRoot/pages/authentication-login.html">
-                        <i class="ti ti-login  text-xl"></i> <span>Login</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item">
-                    <a class="sidebar-link gap-3 py-2 px-3  rounded-md w-full flex items-center hover:text-blue-600 hover:bg-blue-500"
-                        href="@@webRoot/pages/authentication-register.html">
-                        <i class="ti ti-user-plus  text-xl"></i> <span>Register</span>
-                    </a>
-                </li>
             </ul>
         </nav>
     </div>
 </div>
-<!-- </aside> -->
