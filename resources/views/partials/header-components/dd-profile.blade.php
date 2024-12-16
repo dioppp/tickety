@@ -10,12 +10,8 @@
                 <i class="ti ti-user text-gray-500 text-xl "></i>
                 <p class="text-sm text-gray-500">My Profile</p>
             </a>
-            <a href="javscript:void(0)" class="flex gap-2 items-center px-4 py-[6px] hover:bg-blue-500">
-                <i class="ti ti-ticket text-gray-500 text-xl"></i>
-                <p class="text-sm text-gray-500">My Ticket</p>
-            </a>
             <div class="px-4 mt-[7px] grid">
-                <a href="../../pages/authentication-login.html"
+                <a href=""
                     class="btn-outline-primary w-full hover:bg-blue-600 hover:text-white">Logout</a>
             </div>
 
