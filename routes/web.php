@@ -1,10 +1,7 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\EventController;
-use App\Http\Controllers\GuestController;
-use App\Http\Controllers\OrderController;
-use App\Http\Controllers\TransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,14 +14,18 @@ use App\Http\Controllers\TransactionController;
 |
 */
 
-Route::get('/', [GuestController::class, 'index'])->name('index');
+Route::get('/', function () {
+    return view('welcome');
+});
 
 Route::get('/dashboard', function () {
-    return view('pages.modernize.index');
-})->name('dashboard');
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::resource('/event', EventController::class);
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
-Route::post('/book', [OrderController::class, '__invoke'])->name('book');
-
-Route::resource('/transaction', TransactionController::class);
+require __DIR__.'/auth.php';
