@@ -10,7 +10,7 @@
                 <a href="#" class="text-gray-200 hover:text-white transition">About us</a>
                 <a href="#" class="text-gray-200 hover:text-white transition">Contact us</a> --}}
             </div>
-            {{-- <a href="pages/login.html" class="text-gray-200 hover:text-white transition">Login</a> --}}
+            <a href="{{ route('login') }}" class="text-gray-200 hover:text-white transition">Login</a>
         </div>
     </div>
 </nav>
