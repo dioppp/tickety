@@ -12,6 +12,15 @@ class Transaction extends Model
     protected $fillable = [
         'user_id',
         'order_id',
+        'customer_name',
+        'customer_email',
+        'customer_phone',
+        'invoice_ref',
+        'products',
+    ];
+
+    protected $casts = [
+        'products' => 'array',
     ];
 
     public function order()

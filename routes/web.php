@@ -1,8 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\GuestController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\TransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +24,7 @@ Route::get('/dashboard', function () {
 })->name('dashboard');
 
 Route::resource('/event', EventController::class);
+
+Route::post('/book', [OrderController::class, '__invoke'])->name('book');
+
+Route::resource('/transaction', TransactionController::class);

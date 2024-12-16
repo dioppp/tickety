@@ -199,12 +199,19 @@
                         </div>
                     </div>
                     <div class="grid items-center">
-                        <a href="{{ route('event.create') }}" class="btn font-medium hover:bg-blue-700 py-3"
-                            aria-current="page">
+                        <a href="javascript:void(0);" id="buy-tickets-button"
+                            class="btn font-medium hover:bg-blue-700 py-3" aria-current="page">
                             <i class="ti ti-ticket"></i>
                             Beli Tiket Sekarang
                         </a>
                     </div>
+
+                    <form id="order-form" action="{{ route('book') }}" method="POST" style="display: none;">
+                        @csrf
+                        <input type="hidden" name="tickets" id="tickets-input">
+                        <input type="hidden" name="user_id" id="user-id-input">
+                        <input type="hidden" name="event_id" id="event-id-input" value="{{ $event->id }}">
+                    </form>
                 </div>
             </div>
         </div>
@@ -213,6 +220,42 @@
 
 @push('scripts')
     <script>
+        document.getElementById('buy-tickets-button').addEventListener('click', function() {
+            var ticketDetails = getTicketDetails();
+            document.getElementById('tickets-input').value = JSON.stringify(ticketDetails);
+            document.getElementById('user-id-input').value = 1;
+            document.getElementById('order-form').submit();
+        });
+
+        function getTicketDetails() {
+            var ticketSummaries = {};
+            document.querySelectorAll('input[data-hs-input-number-input]').forEach(function(input) {
+                var ticketId = input.getAttribute('data-ticket-id');
+                var ticketCount = parseInt(input.value);
+                var ticketPrice = parseInt(input.getAttribute('data-price'));
+
+                if (!ticketSummaries[ticketId]) {
+                    ticketSummaries[ticketId] = {
+                        id: ticketId,
+                        count: 0,
+                        price: ticketPrice,
+                        name: input.getAttribute('data-ticket-name')
+                    };
+                }
+
+                ticketSummaries[ticketId].count += ticketCount;
+            });
+
+            return Object.keys(ticketSummaries).map(function(ticketId) {
+                return {
+                    id: ticketSummaries[ticketId].id,
+                    name: ticketSummaries[ticketId].name,
+                    qty: ticketSummaries[ticketId].count,
+                    price: ticketSummaries[ticketId].price
+                };
+            });
+        }
+
         function incrementValue(button, price, ticketId) {
             var input = button.previousElementSibling;
             var currentValue = parseInt(input.value);
@@ -269,14 +312,14 @@
 
                 if (!ticketSummaries[ticketId]) {
                     ticketSummaries[ticketId] = {
+                        id: ticketId,
                         count: 0,
-                        price: 0,
+                        price: ticketPrice,
                         name: input.getAttribute('data-ticket-name')
                     };
                 }
 
                 ticketSummaries[ticketId].count += ticketCount;
-                ticketSummaries[ticketId].price += ticketCount * ticketPrice;
                 grandTotalTickets += ticketCount;
                 grandTotalPrice += ticketCount * ticketPrice;
             });
@@ -298,7 +341,7 @@
                             ${summary.count} Tiket
                         </h4>
                         <span class="text-gray-600 text-md font-bold">
-                            ${formatRupiah(summary.price)}
+                            ${formatRupiah(summary.count * summary.price)}
                         </span>
                     </div>
                     <hr class="mt-4 mb-4">
