@@ -48,6 +48,7 @@ class EventController extends Controller
         $data['image'] = $request->file('image') ? $request->file('image')->store('banners') : null;
 
         $tickets = isset($data['tickets']) ? (is_array($data['tickets']) ? $data['tickets'] : [$data['tickets']]) : [];
+        $data = array_diff_key($data, array_flip(['tickets']));
 
         DB::transaction(function () use ($data, $tickets) {
             $event = Event::create($data);
@@ -96,6 +97,7 @@ class EventController extends Controller
      */
     public function update(UpdateEventRequest $request, Event $event)
     {
+        // dd($request->validated());
         $event->update($request->validated());
 
         return redirect()->route('event.show', $event->id)->with('success', 'Detail event berhasil diubah');

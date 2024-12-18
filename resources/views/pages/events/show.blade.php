@@ -49,14 +49,14 @@
                 <hr class="mt-8">
                 <div class="flex gap-1 items-center mt-1">
                     <div class="flex flex-col gap-4">
-                        <a href="{{ route('dashboard') }}" class="flex items-center mt-4">
+                        <a href="{{ route('profile.show', $event->user->id) }}" class="flex items-center mt-4">
                             <img class="object-cover w-9 h-9 rounded-full" src="{{ asset('images/profile/user-3.jpg') }}"
                                 alt="" aria-hidden="true">
                         </a>
                     </div>
                     <div class="flex flex-col gap-2 mt-4">
                         <span class="text-sm px-3 text-gray-500">Diselenggarakan oleh</span>
-                        <a href="{{ route('dashboard') }}"
+                        <a href="{{ route('profile.show', $event->user->id) }}"
                             class="text-sm px-3 font-semibold">{{ ucwords($event->user->name) }}</a>
                     </div>
                 </div>
@@ -259,7 +259,6 @@
                     <form id="order-form" action="{{ route('book') }}" method="POST" style="display: none;">
                         @csrf
                         <input type="hidden" name="tickets" id="tickets-input">
-                        <input type="hidden" name="user_id" id="user-id-input" value="{{ auth()->id() }}">
                         <input type="hidden" name="event_id" id="event-id-input" value="{{ $event->id }}">
                     </form>
                 </div>
@@ -279,8 +278,13 @@
         function getTicketDetails() {
             var ticketSummaries = {};
             document.querySelectorAll('input[data-hs-input-number-input]').forEach(function(input) {
-                var ticketId = input.getAttribute('data-ticket-id');
                 var ticketCount = parseInt(input.value);
+
+                if (ticketCount == 0) {
+                    return;
+                }
+
+                var ticketId = input.getAttribute('data-ticket-id');
                 var ticketPrice = parseInt(input.getAttribute('data-price'));
 
                 if (!ticketSummaries[ticketId]) {
@@ -297,7 +301,7 @@
 
             return Object.keys(ticketSummaries).map(function(ticketId) {
                 return {
-                    id: ticketSummaries[ticketId].id,
+                    ticket_id: ticketSummaries[ticketId].id,
                     name: ticketSummaries[ticketId].name,
                     qty: ticketSummaries[ticketId].count,
                     price: ticketSummaries[ticketId].price
