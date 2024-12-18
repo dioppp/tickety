@@ -23,69 +23,10 @@ class OrderController extends Controller
         ];
     }
 
-    // public function __invoke()
-    // {
-    //     $res = Http::withHeaders($this->generateHeader())->post(env('WINPAY_BASE_URL') . '/api/create', [
-    //         'customer' => [
-    //             'name' => 'John Doe',
-    //             'email' => '',
-    //             'phone' => '',
-    //         ],
-    //         'invoice' => [
-    //             'ref' => uniqid(),
-    //             'products' => [
-    //                 [
-    //                     'name' => 'Product 1',
-    //                     'price' => 10000,
-    //                     'qty' => 1,
-    //                 ],
-    //                 [
-    //                     'name' => 'Product 2',
-    //                     'price' => 20000,
-    //                     'qty' => 2,
-    //                 ],
-    //             ],
-    //         ],
-    //         'back_url' => route('event.index'),
-    //         'interval' => 5,
-    //     ]);
-
-    //     return redirect($res['responseData']['redirect_url']);
-    // }
-
-    // public function __invoke(Request $request)
-    // {
-    //     $tickets = json_decode($request->input('tickets'), true);
-
-    //     $products = array_map(function ($ticket) {
-    //         return [
-    //             'name' => $ticket['name'],
-    //             'price' => $ticket['price'],
-    //             'qty' => $ticket['qty'],
-    //         ];
-    //     }, $tickets);
-
-    //     $res = Http::withHeaders($this->generateHeader())->post(env('WINPAY_BASE_URL') . '/api/create', [
-    //         'customer' => [
-    //             'name' => 'John Doe',
-    //             'email' => 'johndoe@example.com',
-    //             'phone' => '1234567890',
-    //         ],
-    //         'invoice' => [
-    //             'ref' => uniqid(),
-    //             'products' => $products,
-    //         ],
-    //         'back_url' => route('event.index'),
-    //         'interval' => 5,
-    //     ]);
-
-    //     return redirect($res['responseData']['redirect_url']);
-    // }
-
     public function __invoke(Request $request)
     {
         $tickets = json_decode($request->input('tickets'), true);
-        $userId = $request->input('user_id'); // ini manual karena gaada auth
+        $userId = $request->input('user_id');
         $eventId = $request->input('event_id');
 
         $products = array_map(function ($ticket) {
@@ -125,6 +66,7 @@ class OrderController extends Controller
                 'customer_phone' => $customer['phone'],
                 'invoice_ref' => $invoiceRef,
                 'products' => $products,
+                'status' => Transaction::STATUS_PENDING,
             ]);
         }
 
