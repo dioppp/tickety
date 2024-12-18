@@ -17,11 +17,15 @@ class Transaction extends Model
         'customer_phone',
         'invoice_ref',
         'products',
+        'status',
     ];
 
     protected $casts = [
         'products' => 'array',
     ];
+
+    const STATUS_PENDING = 0;
+    const STATUS_SUCCESS = 1;
 
     public function order()
     {

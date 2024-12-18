@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->string('event_name');
             $table->enum('category', ['Konser', 'Festival', 'Pertandingan', 'Pameran', 'Workshop', 'Seminar', 'Lainnya']);
             $table->text('event_description');

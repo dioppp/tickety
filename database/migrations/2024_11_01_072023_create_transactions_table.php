@@ -13,13 +13,14 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
-            $table->foreignId('order_id')->constrained();
+            $table->unsignedBigInteger('order_id');
+            $table->foreign('order_id')->references('id')->on('orders');
             $table->string('customer_name');
             $table->string('customer_email');
             $table->string('customer_phone');
             $table->string('invoice_ref');
             $table->json('products');
+            $table->integer('status');
             $table->timestamps();
         });
     }

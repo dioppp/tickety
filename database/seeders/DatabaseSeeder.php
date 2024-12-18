@@ -25,6 +25,15 @@ class DatabaseSeeder extends Seeder
             'image' => 'default.jpg',
         ]);
 
+        User::create([
+            'name' => 'supardi',
+            'email' => 'supardi@test.com',
+            'password' => bcrypt('123123'),
+            'address' => 'Jl. Delta Raya Utara Jl. Delta Sari Indah Kav. 49, RT.016/RW.006, Ngingas, Kec. Waru, Kabupaten Sidoarjo, Jawa Timur 61256',
+            'phone' => '08123456788',
+            'image' => 'default.jpg',
+        ]);
+
         Event::create([
             'user_id' => 1,
             'event_name' => 'Feast',
@@ -84,7 +93,7 @@ class DatabaseSeeder extends Seeder
             'price' => 100000,
             'stock' => 100,
             'sell_start_date' => '2024-12-01',
-            'sell_end_date' => '2024-12-01',
+            'sell_end_date' => '2024-12-31',
             'sell_start_time' => '08:00:00',
             'sell_end_time' => '17:00:00',
         ]);
@@ -96,7 +105,7 @@ class DatabaseSeeder extends Seeder
             'price' => 150000,
             'stock' => 100,
             'sell_start_date' => '2024-12-01',
-            'sell_end_date' => '2024-12-01',
+            'sell_end_date' => '2024-12-31',
             'sell_start_time' => '08:00:00',
             'sell_end_time' => '17:00:00',
         ]);
@@ -108,7 +117,7 @@ class DatabaseSeeder extends Seeder
             'price' => 500000,
             'stock' => 10,
             'sell_start_date' => '2024-12-01',
-            'sell_end_date' => '2024-12-01',
+            'sell_end_date' => '2024-12-31',
             'sell_start_time' => '08:00:00',
             'sell_end_time' => '17:00:00',
         ]);
@@ -120,7 +129,7 @@ class DatabaseSeeder extends Seeder
             'price' => 180000,
             'stock' => 100,
             'sell_start_date' => '2024-12-01',
-            'sell_end_date' => '2024-12-01',
+            'sell_end_date' => '2024-12-31',
             'sell_start_time' => '08:00:00',
             'sell_end_time' => '17:00:00',
         ]);
@@ -132,7 +141,7 @@ class DatabaseSeeder extends Seeder
             'price' => 200000,
             'stock' => 50,
             'sell_start_date' => '2024-12-01',
-            'sell_end_date' => '2024-12-01',
+            'sell_end_date' => '2024-12-31',
             'sell_start_time' => '08:00:00',
             'sell_end_time' => '17:00:00',
         ]);
@@ -144,7 +153,7 @@ class DatabaseSeeder extends Seeder
             'price' => 500000,
             'stock' => 10,
             'sell_start_date' => '2024-12-01',
-            'sell_end_date' => '2024-12-01',
+            'sell_end_date' => '2024-12-31',
             'sell_start_time' => '08:00:00',
             'sell_end_time' => '17:00:00',
         ]);
@@ -156,7 +165,7 @@ class DatabaseSeeder extends Seeder
             'price' => 80000,
             'stock' => 100,
             'sell_start_date' => '2024-12-01',
-            'sell_end_date' => '2024-12-01',
+            'sell_end_date' => '2024-12-31',
             'sell_start_time' => '08:00:00',
             'sell_end_time' => '17:00:00',
         ]);
