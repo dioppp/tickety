@@ -28,16 +28,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+    Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile.show');
+
+    Route::resource('/event', EventController::class);
+    Route::post('/book', [OrderController::class, '__invoke'])->name('book');
+    Route::resource('/transaction', TransactionController::class);
 });
 
 require __DIR__.'/auth.php';
 
-Route::get('/home', function () {
-    return view('pages.modernize.index');
-})->name('home');
-
-Route::resource('/event', EventController::class);
-
-Route::post('/book', [OrderController::class, '__invoke'])->name('book');
-
-Route::resource('/transaction', TransactionController::class);
