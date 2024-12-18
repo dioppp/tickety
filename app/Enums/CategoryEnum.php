@@ -4,11 +4,11 @@ namespace App\Enums;
 
 enum CategoryEnum: string
 {
-    case Konser = 'Konser';
-    case Festival = 'Festival';
-    case Pertandingan = 'Pertandingan';
-    case Pameran = 'Pameran';
-    case Workshop = 'Workshop';
-    case Seminar = 'Seminar';
-    case Lainnya = 'Lainnya';
+    case KONSER = 'Konser';
+    case FESTIVAL = 'Festival';
+    case PERTANDINGAN = 'Pertandingan';
+    case PAMERAN = 'Pameran';
+    case WORKSHOP = 'Workshop';
+    case SEMINAR = 'Seminar';
+    case LAINNYA = 'Lainnya';
 }
