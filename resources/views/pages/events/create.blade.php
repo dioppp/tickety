@@ -29,7 +29,7 @@
                                     class="@error('category') is-invalid @enderror py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-600 focus:ring-0">
                                     <option value="">Pilih Kategori Event</option>
                                     @foreach ($categories as $category)
-                                        <option value="{{ $category->value }}">{{ $category->name }}</option>
+                                        <option value="{{ $category->value }}">{{ $category->value }}</option>
                                     @endforeach
                                 </select>
                                 @error('category')

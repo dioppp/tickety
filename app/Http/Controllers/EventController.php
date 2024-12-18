@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use App\Models\Event;
 use App\Models\Ticket;
 use App\Enums\CategoryEnum;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StoreEventRequest;
+use App\Http\Requests\UpdateEventRequest;
 
 class EventController extends Controller
 {
@@ -81,15 +81,24 @@ class EventController extends Controller
      */
     public function edit(Event $event)
     {
-        //
+        $breadcrumbs = [
+            ['name' => 'Beranda', 'url' => route('event.index')],
+            ['name' => $event->event_name, 'url' => route('event.show', $event->id)],
+            ['name' => 'Ubah Event', 'url' => route('event.edit', $event->id)],
+        ];
+        $categories = CategoryEnum::cases();
+
+        return view('pages.events.edit', compact('breadcrumbs', 'event', 'categories'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Event $event)
+    public function update(UpdateEventRequest $request, Event $event)
     {
-        //
+        $event->update($request->validated());
+
+        return redirect()->route('event.show', $event->id)->with('success', 'Detail event berhasil diubah');
     }
 
     /**
@@ -97,6 +106,8 @@ class EventController extends Controller
      */
     public function destroy(Event $event)
     {
-        //
+        $event->delete();
+
+        return redirect()->route('event.index')->with('success', 'Event berhasil dihapus');
     }
 }

@@ -70,7 +70,26 @@
         <div class="col-span-2">
             <div class="card h-full">
                 <div class="card-body flex flex-col">
-                    <h4 class="text-gray-600 text-lg font-semibold mb-6">Detail Event</h4>
+                    <div class="relative flex items-center justify-between mb-4">
+                        <h4 class="text-gray-600 text-lg font-semibold">Detail Event</h4>
+                        @if (auth()->user()->id == $event->user_id)
+                            <div class="relative flex items-center justify-between gap-1">
+                                <a href="{{ route('event.edit', $event->id) }}"
+                                    class="btn bg-yellow-500 font-normal hover:bg-yellow-600">
+                                    <i class="ti ti-pencil"></i>
+                                </a>
+                                <form action="{{ route('event.destroy', $event->id) }}" method="POST"
+                                    id="delete-form-event-{{ $event->id }}">
+                                    @csrf
+                                    @method('DELETE')
+                                </form>
+                                <button type="submit" class="btn bg-red-500 font-normal hover:bg-red-600"
+                                    onclick="confirmDelete('delete-form-event-{{ $event->id }}')">
+                                    <i class="ti ti-trash"></i>
+                                </button>
+                            </div>
+                        @endif
+                    </div>
                     <div class="relative overflow-x-auto">
                         <h4 class="text-gray-600 text-md font-semibold mb-3">Deskripsi</h4>
                         <h4 class="text-gray-600 text-sm font-medium mb-6">{{ ucfirst($event->event_description) }}</h4>
@@ -82,9 +101,29 @@
                                 @foreach ($tickets as $t)
                                     <div class="card">
                                         <div class="card-body">
-                                            <h4 class="text-gray-600 text-lg font-semibold mb-3">
-                                                {{ ucwords($t->ticket_name) }}
-                                            </h4>
+                                            <div class="relative flex items-center justify-between mb-2">
+                                                <h4 class="text-gray-600 text-lg font-semibold">
+                                                    {{ ucwords($t->ticket_name) }}
+                                                </h4>
+                                                @if (auth()->user()->id == $event->user_id)
+                                                    <div class="relative flex items-center justify-between gap-1">
+                                                        <a href="{{ route('ticket.edit', $t->id) }}"
+                                                            class="btn bg-yellow-500 font-normal hover:bg-yellow-600">
+                                                            <i class="ti ti-pencil"></i>
+                                                        </a>
+                                                        <form action="{{ route('ticket.destroy', $t->id) }}" method="POST"
+                                                            id="delete-form-ticket-{{ $t->id }}">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                        </form>
+                                                        <button type="submit"
+                                                            class="btn bg-red-500 font-normal hover:bg-red-600"
+                                                            onclick="confirmDelete('delete-form-ticket-{{ $t->id }}')">
+                                                            <i class="ti ti-trash"></i>
+                                                        </button>
+                                                    </div>
+                                                @endif
+                                            </div>
                                             <div class="flex gap-6 items-center justify-between">
                                                 <div class="flex flex-col gap-4">
                                                     <h4 class="text-gray-500 text-sm font-medium">
@@ -161,6 +200,17 @@
                                         </div>
                                     </div>
                                 @endforeach
+                                @if (auth()->user()->id == $event->user_id)
+                                    <div class="card">
+                                        <div class="grid items-center">
+                                            <a href="{{ route('ticket.create', $event->id) }}"
+                                                class="btn font-medium hover:bg-blue-700 py-3">
+                                                <i class="ti ti-library-plus"></i>
+                                                Tambah Jenis Tiket
+                                            </a>
+                                        </div>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -209,7 +259,7 @@
                     <form id="order-form" action="{{ route('book') }}" method="POST" style="display: none;">
                         @csrf
                         <input type="hidden" name="tickets" id="tickets-input">
-                        <input type="hidden" name="user_id" id="user-id-input">
+                        <input type="hidden" name="user_id" id="user-id-input" value="{{ auth()->id() }}">
                         <input type="hidden" name="event_id" id="event-id-input" value="{{ $event->id }}">
                     </form>
                 </div>
@@ -223,7 +273,6 @@
         document.getElementById('buy-tickets-button').addEventListener('click', function() {
             var ticketDetails = getTicketDetails();
             document.getElementById('tickets-input').value = JSON.stringify(ticketDetails);
-            document.getElementById('user-id-input').value = 1;
             document.getElementById('order-form').submit();
         });
 
@@ -370,6 +419,24 @@
 
         function formatRupiah(amount) {
             return 'Rp' + amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+        }
+    </script>
+
+    <script>
+        function confirmDelete(formId) {
+            Swal.fire({
+                title: 'Apakah kamu yakin?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Iya, hapus!',
+                cancelButtonText: 'Batal',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById(formId).submit();
+                }
+            });
         }
     </script>
 @endpush
