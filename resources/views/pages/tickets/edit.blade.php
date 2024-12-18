@@ -10,8 +10,6 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="flex flex-col gap-6" id="ticket-forms">
-                            <input type="hidden" name="ticket_id" value="{{ $ticket->id }}">
-                            <input type="hidden" name="event_id" value="{{ $ticket->event_id }}">
                             <div>
                                 <label for="ticket_name" class="block text-sm font-semibold mb-2 text-gray-600">Nama
                                     Tiket</label>

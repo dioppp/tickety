@@ -13,17 +13,16 @@ return new class extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreignId('user_id')->constrained();
             $table->string('event_name');
-            $table->enum('category', ['Konser', 'Festival', 'Pertandingan', 'Pameran', 'Workshop', 'Seminar', 'Lainnya']);
+            $table->enum('category', ['Konser', 'Stand Up Comedy', 'Festival', 'Pertandingan', 'Pameran', 'Seminar', 'Lainnya']);
             $table->text('event_description');
             $table->string('location');
             $table->date('start_date');
             $table->date('end_date');
             $table->time('start_time');
             $table->time('end_time');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

@@ -9,13 +9,7 @@ class Order extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'user_id',
-        'event_id',
-        'ticket_id',
-        'quantity',
-        'total',
-    ];
+    protected $guarded = [];
 
     public function ticket()
     {
@@ -24,6 +18,11 @@ class Order extends Model
 
     public function transaction()
     {
-        return $this->hasOne(Transaction::class);
+        return $this->belongsTo(Transaction::class);
+    }
+
+    public function getTotal()
+    {
+        return $this->ticket->price * $this->quantity;
     }
 }

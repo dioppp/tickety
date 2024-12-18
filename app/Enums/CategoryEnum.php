@@ -5,10 +5,10 @@ namespace App\Enums;
 enum CategoryEnum: string
 {
     case KONSER = 'Konser';
+    case STAND_UP_COMEDY = 'Stand Up Comedy';
     case FESTIVAL = 'Festival';
     case PERTANDINGAN = 'Pertandingan';
     case PAMERAN = 'Pameran';
-    case WORKSHOP = 'Workshop';
     case SEMINAR = 'Seminar';
     case LAINNYA = 'Lainnya';
 }

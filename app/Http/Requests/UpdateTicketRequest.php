@@ -22,8 +22,6 @@ class UpdateTicketRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'ticket_id' => 'required|exists:tickets,id',
-            'event_id' => 'required|exists:events,id',
             'ticket_name' => 'string|max:255',
             'ticket_description' => 'string',
             'price' => 'numeric|min:0',

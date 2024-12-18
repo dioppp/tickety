@@ -9,26 +9,18 @@ class Transaction extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'user_id',
-        'order_id',
-        'customer_name',
-        'customer_email',
-        'customer_phone',
-        'invoice_ref',
-        'products',
-        'status',
-    ];
-
-    protected $casts = [
-        'products' => 'array',
-    ];
+    protected $guarded = [];
 
     const STATUS_PENDING = 0;
     const STATUS_SUCCESS = 1;
 
-    public function order()
+    public function orders()
     {
-        return $this->belongsTo(Order::class);
+        return $this->hasMany(Order::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

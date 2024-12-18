@@ -10,8 +10,6 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="flex flex-col gap-6">
-                            <input type="hidden" name="event_id" value="{{ $event->id }}">
-                            <input type="hidden" name="user_id" value="{{ auth()->id() }}">
                             <div>
                                 <label for="event_name" class="block text-sm font-semibold mb-2 text-gray-600">Nama
                                     Event</label>

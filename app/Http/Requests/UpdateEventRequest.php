@@ -24,8 +24,6 @@ class UpdateEventRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'event_id' => 'required|exists:events,id',
-            'user_id' => 'required|exists:users,id',
             'event_name' => 'string|max:255',
             'category' => new Enum(CategoryEnum::class),
             'event_description' => 'string',
