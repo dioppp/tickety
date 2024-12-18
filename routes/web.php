@@ -5,6 +5,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TicketController;
 use App\Http\Controllers\TransactionController;
 
 /*
@@ -32,6 +33,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile.show');
 
     Route::resource('/event', EventController::class);
+    Route::get('/ticket/{event}', [TicketController::class, 'create'])->name('ticket.create');
+    Route::post('/ticket', [TicketController::class, 'store'])->name('ticket.store');
+    Route::get('/ticket/{ticket}/edit', [TicketController::class, 'edit'])->name('ticket.edit');
+    Route::put('/ticket/{ticket}', [TicketController::class, 'update'])->name('ticket.update');
+    Route::delete('/ticket/{ticket}', [TicketController::class, 'destroy'])->name('ticket.destroy');
+
     Route::post('/book', [OrderController::class, '__invoke'])->name('book');
     Route::resource('/transaction', TransactionController::class);
 });
