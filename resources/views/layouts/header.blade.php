@@ -10,7 +10,17 @@
                 <a href="#" class="text-gray-200 hover:text-white transition">About us</a>
                 <a href="#" class="text-gray-200 hover:text-white transition">Contact us</a> --}}
             </div>
-            <a href="{{ route('login') }}" class="text-gray-200 hover:text-white transition">Login</a>
+            @if (Auth::check())
+                <a href="{{ route('profile.index') }}"
+                    class="text-gray-200 hover:text-white transition px-4 py-2 rounded-md hover:bg-blue-700">
+                    {{ ucwords(Auth::user()->name) }}
+                </a>
+            @else
+                <a href="{{ route('login') }}"
+                    class="text-gray-200 hover:text-white transition px-4 py-2 rounded-md hover:bg-blue-700">
+                    Login
+                </a>
+            @endif
         </div>
     </div>
 </nav>

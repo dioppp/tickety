@@ -25,7 +25,7 @@
                             </h4>
                             <br>
                             <hr>
-                            <a href="{{ route('dashboard') }}" class="flex items-center mt-4">
+                            <a href="{{ route('profile.show', $event->user->id) }}" class="flex items-center mt-4">
                                 <img class="object-cover w-9 h-9 rounded-full"
                                     src="{{ asset('images/profile/user-3.jpg') }}" alt="" aria-hidden="true">
                                 <span class="text-sm px-3">{{ ucwords($event->user->name) }}</span>
