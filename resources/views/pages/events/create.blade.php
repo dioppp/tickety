@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="flex flex-col gap-6">
-                            <input type="hidden" name="user_id" value="1">
+                            <input type="hidden" name="user_id" value="{{ auth()->id() }}">
                             <div>
                                 <label for="event_name" class="block text-sm font-semibold mb-2 text-gray-600">Nama
                                     Event</label>
@@ -229,7 +229,7 @@
                     </div>
                 </div>
                 <button type="button" id="add-ticket-button"
-                    class="block py-2 px-4 inline-flex items-center gap-x-2 mt-4 text-sm font-semibold rounded-md border border-blue-600 text-blue-600 hover:border-blue-600 hover:text-white hover:bg-blue-600">
+                    class="py-2 px-4 inline-flex items-center gap-x-2 mt-4 text-sm font-semibold rounded-md border border-blue-600 text-blue-600 hover:border-blue-600 hover:text-white hover:bg-blue-600">
                     <i class="ti ti-circle-plus"></i> Tambah Jenis Tiket
                 </button>
                 <button class="block py-3 btn text-sm text-white font-medium w-fit hover:bg-blue-700 mt-8">Buat Event
