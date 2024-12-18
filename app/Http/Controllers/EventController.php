@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\CategoryEnum;
+use App\Models\User;
 use App\Models\Event;
 use App\Models\Ticket;
+use App\Enums\CategoryEnum;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StoreEventRequest;
@@ -16,9 +17,12 @@ class EventController extends Controller
      */
     public function index()
     {
+        $breadcrumbs = [
+            ['name' => 'Beranda', 'url' => route('event.index')],
+        ];
         $events = Event::all();
 
-        return view('pages.events.index', compact('events'));
+        return view('pages.events.index', compact('breadcrumbs', 'events'));
     }
 
     /**
@@ -26,9 +30,13 @@ class EventController extends Controller
      */
     public function create()
     {
+        $breadcrumbs = [
+            ['name' => 'Beranda', 'url' => route('event.index')],
+            ['name' => 'Buat Event', 'url' => route('event.create')],
+        ];
         $categories = CategoryEnum::cases();
 
-        return view('pages.events.create', compact('categories'));
+        return view('pages.events.create', compact('breadcrumbs', 'categories'));
     }
 
     /**
@@ -58,10 +66,14 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
+        $breadcrumbs = [
+            ['name' => 'Beranda', 'url' => route('event.index')],
+            ['name' => $event->event_name, 'url' => route('event.show', $event->id)],
+        ];
         $event = Event::with('tickets')->find($event->id);
         $tickets = $event->tickets;
 
-        return view('pages.events.show', compact('event', 'tickets'));
+        return view('pages.events.show', compact('breadcrumbs', 'event', 'tickets'));
     }
 
     /**

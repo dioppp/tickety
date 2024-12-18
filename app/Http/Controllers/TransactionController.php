@@ -12,9 +12,12 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        return view('pages.transaction.index', [
-            'transactions' => Transaction::all()
-        ]);
+        $breadcrumbs = [
+            ['name' => 'Transaksi', 'url' => route('transaction.index')],
+        ];
+        $transactions = Transaction::all();
+
+        return view('pages.transaction.index', compact('breadcrumbs', 'transactions'));
     }
 
     /**

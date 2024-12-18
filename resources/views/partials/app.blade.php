@@ -23,8 +23,9 @@
                 <!--  Header End -->
 
                 <!-- Content Start -->
-                <main class="h-full overflow-y-auto max-w-full pt-4">
+                <main class="h-full overflow-y-auto max-w-full">
                     <div class="container full-container py-5 flex flex-col gap-6">
+                        @include('partials.breadcrumbs')
                         @yield('content')
                     </div>
                 </main>
