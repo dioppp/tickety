@@ -17,7 +17,7 @@ class TransactionController extends Controller
         ];
         $transactions = Transaction::where('user_id', auth()->id())
             ->with('orders.ticket.event')
-            ->get();
+            ->paginate(5);
 
         return view('pages.transaction.index', compact('breadcrumbs', 'transactions'));
     }

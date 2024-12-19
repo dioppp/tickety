@@ -23,7 +23,7 @@
                             <tbody>
                                 @forelse ($transactions as $transaction)
                                     <tr>
-                                        <td class="p-4 font-semibold text-gray-600 ">{{ $loop->iteration }}</td>
+                                        <td class="p-4 font-semibold text-gray-600 ">{{ $transaction->id }}</td>
                                         <td class="p-4">
                                             <h3 class=" font-semibold text-gray-600">
                                                 {{ $transaction->orders->first()->ticket->event->event_name }}</h3>
@@ -44,7 +44,7 @@
                                         <td class="p-4">
                                             @if ($transaction->status == 0)
                                                 <button disabled
-                                                    class="py-2 px-3 inline-flex items-center text-sm font-semibold rounded-md border border-transparent bg-red-500 text-white">
+                                                    class="py-2 px-3 inline-flex items-center text-sm font-semibold rounded-md border border-transparent bg-yellow-500 text-white">
                                                     Belum Dibayar
                                                 </button>
                                             @elseif ($transaction->status == 1)
@@ -52,16 +52,24 @@
                                                     class="py-2 px-3 inline-flex items-center text-sm font-semibold rounded-md border border-transparent bg-teal-500 text-white">
                                                     Pembayaran Sukses
                                                 </button>
+                                            @elseif ($transaction->status == 2)
+                                                <button disabled
+                                                    class="py-2 px-3 inline-flex items-center text-sm font-semibold rounded-md border border-transparent bg-red-500 text-white">
+                                                    Pembayaran Gagal
+                                                </button>
                                             @endif
                                         </td>
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="6" class="p-4 text-center">Tidak ada data</td>
+                                        <td colspan="6" class="p-4 text-center">Belum ada transaksi</td>
                                     </tr>
                                 @endforelse
                             </tbody>
                         </table>
+                        <div class="mt-4 mr-3">
+                            {{ $transactions->links() }}
+                        </div>
                     </div>
                 </div>
             </div>
