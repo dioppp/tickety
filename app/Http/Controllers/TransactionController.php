@@ -15,7 +15,9 @@ class TransactionController extends Controller
         $breadcrumbs = [
             ['name' => 'Transaksi', 'url' => route('transaction.index')],
         ];
-        $transactions = Transaction::all();
+        $transactions = Transaction::where('user_id', auth()->id())
+            ->with('orders.ticket.event')
+            ->get();
 
         return view('pages.transaction.index', compact('breadcrumbs', 'transactions'));
     }

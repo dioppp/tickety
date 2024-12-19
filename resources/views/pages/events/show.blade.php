@@ -249,14 +249,15 @@
                         </div>
                     </div>
                     <div class="grid items-center">
-                        <a href="javascript:void(0);" id="buy-tickets-button"
-                            class="btn font-medium hover:bg-blue-700 py-3" aria-current="page">
+                        <a href="javascript:void(0);" class="btn font-medium hover:bg-blue-700 py-3" aria-current="page"
+                            onclick="confirmMessage('order-form')">
                             <i class="ti ti-ticket"></i>
                             Beli Tiket Sekarang
                         </a>
                     </div>
 
-                    <form id="order-form" action="{{ route('book') }}" method="POST" style="display: none;">
+                    <form id="order-form" action="{{ route('book') }}" method="POST" style="display: none;"
+                        id="order-form">
                         @csrf
                         <input type="hidden" name="tickets" id="tickets-input">
                         <input type="hidden" name="event_id" id="event-id-input" value="{{ $event->id }}">
@@ -435,6 +436,39 @@
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
                 confirmButtonText: 'Iya, hapus!',
+                cancelButtonText: 'Batal',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById(formId).submit();
+                }
+            });
+        }
+    </script>
+
+    <script>
+        function confirmMessage(formId) {
+            var ticketDetails = getTicketDetails();
+            document.getElementById('tickets-input').value = JSON.stringify(ticketDetails);
+
+            var ticketsInput = document.getElementById('tickets-input').value;
+
+            if (!ticketsInput || ticketsInput === '[]') {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Tidak ada tiket yang dipilih',
+                    text: 'Silakan pilih tiket terlebih dahulu.',
+                    confirmButtonColor: '#3085d6',
+                });
+                return;
+            }
+
+            Swal.fire({
+                title: 'Apakah kamu yakin ingin membeli ini?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Iya, yakin bang!',
                 cancelButtonText: 'Batal',
             }).then((result) => {
                 if (result.isConfirmed) {

@@ -62,6 +62,9 @@ class OrderController extends Controller
 
         $transaction->update(['total' => $total]);
 
+        $ticketModel = Ticket::find($ticket['ticket_id']);
+        $eventId = $ticketModel->event->id;
+
         $res = Http::withHeaders($this->generateHeader())->post(env('WINPAY_BASE_URL') . '/api/create', [
             'customer' => [
                 'name' => $customer->name,
@@ -72,7 +75,7 @@ class OrderController extends Controller
                 'ref' => $invoiceRef,
                 'products' => $products,
             ],
-            'back_url' => route('event.index'),
+            'back_url' => route('event.show', $eventId),
             'interval' => 10,
         ]);
 
