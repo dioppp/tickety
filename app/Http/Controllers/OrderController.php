@@ -46,18 +46,21 @@ class OrderController extends Controller
             'total' => 0
         ]);
 
+        $total = 0;
         $orders = [];
+
         foreach ($tickets as $key => $ticket) {
-            $orders[$key] = Order::create([
+            $order = Order::create([
                 'quantity' => $ticket['qty'],
                 'ticket_id' => $ticket['ticket_id'],
                 'transaction_id' => $transaction->id,
             ]);
 
-            // $ticketModel = Ticket::find($ticket['id']);
-            // $ticketModel->stock -= $ticket['qty'];
-            // $ticketModel->save();
+            $total += $order->getTotal();
+            $orders[$key] = $order;
         }
+
+        $transaction->update(['total' => $total]);
 
         $res = Http::withHeaders($this->generateHeader())->post(env('WINPAY_BASE_URL') . '/api/create', [
             'customer' => [
